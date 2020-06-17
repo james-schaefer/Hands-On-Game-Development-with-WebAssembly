@@ -17,10 +17,11 @@
 env:
 	echo please remember to update emsdk at for each each new session
 
-build: hello_sdl.c env
-	emcc hello_sdl.c --emrun --preload-file font -s USE_SDL_TTF=2 -o hello_sdl.html
+build: sprite_animation.c sprite.c sprite_move.c env 
+	emcc sprite_animation.c sprite.c sprite_move.c \
+        --emrun --preload-file sprites -s USE_SDL=2 \
+        -s USE_SDL_IMAGE=2 -s SDL2_IMAGE_FORMATS=["png"] -o sprite_move.html
 
-hello: hello_sdl.c  
 
 run: 
 	firefox http://localhost:12345/

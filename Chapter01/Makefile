@@ -1,14 +1,15 @@
 # Build for chapter 1 code.  
-.PHONY: setup_env run
+.PHONY: env run
 
-setup_env:
+env:
 	./setup_env.sh
 
 build: hello.c
 	emcc hello.c --emrun -o hello.html
 
 run:
-	emrun --browser firefox hello.html
+	firefox http://localhost:12345
+	python3 -m http.server 12345  
 	
 list_browsers:
 	emrun --list_browsers
